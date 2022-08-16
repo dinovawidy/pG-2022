@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "password": "password",
-    "confirm_password": "aaaa"
+    "confirm_password": "password"
 }
 
 ###
@@ -12,5 +12,5 @@ Content-Type: application/json
 
 {
     "username": "bejo",
-    "password": "bejo"
+    "password": "a"
 }

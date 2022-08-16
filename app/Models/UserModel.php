@@ -28,7 +28,6 @@ class UserModel extends Model
         'username' => 'required',
         'password' => 'required',
         'name' => 'required',
-        'address' => 'required',
         'role' => 'required'
     ];
     protected $validationMessages   = [
@@ -40,9 +39,6 @@ class UserModel extends Model
         ],
         'name' => [
             'required' => 'field name required!'
-        ],
-        'address' => [
-            'required' => 'field address required!'
         ],
         'role' => [
             'required' => 'field role required!'
