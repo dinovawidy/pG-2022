@@ -12,6 +12,7 @@ class AuthController extends BaseController
 {
     public function registerAccount()
     {
+        $uModel = new UserModel();
         $jsonrequest = esc($this->request->getJSON(true));
 
         if ($jsonrequest['password'] !== $jsonrequest['confirm_password']) {
@@ -22,7 +23,6 @@ class AuthController extends BaseController
                 'message' => $message
             ])->setStatusCode($status);
         } else {
-            $uModel = new UserModel();
             $uModel->insert([
                 'username' => $jsonrequest['username'],
                 'password' => password_hash($jsonrequest['password'], PASSWORD_BCRYPT),
@@ -62,7 +62,7 @@ class AuthController extends BaseController
 
         if (!empty($uCandidate) && password_verify($jsonrequest['password'], $uCandidate['password'])) {
             $status = ResponseInterface::HTTP_ACCEPTED;
-            $message = "Welcome Bejo!";
+            $message = "Welcome $uCandidate[name] !";
             $jwtPayload = [
                 'iat' => Time::now()->getTimestamp(),
                 'exp' => Time::now()->addHours(2)->getTimestamp(),
